@@ -6,7 +6,7 @@
     {
         public async Task<GetProductByIdResult> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
         {
-            var result = await session.LoadAsync<Product>(query.Id);
+            var result = await session.LoadAsync<Product>(query.Id, cancellationToken);
 
             if (result is null)
                 throw new ProductNotFoundException();
